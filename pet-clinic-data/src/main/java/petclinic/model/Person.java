@@ -1,4 +1,4 @@
-package no.kristianped.petclinic.model;
+package petclinic.model;
 
 public class Person {
 
