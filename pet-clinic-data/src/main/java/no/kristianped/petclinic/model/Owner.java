@@ -36,4 +36,17 @@ public class Owner extends Person {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets = new HashSet<>();
+
+    public Pet getPet(String name) {
+        return getPet(name, false);
+    }
+
+    public Pet getPet(String name, boolean ignoreNew) {
+        for (Pet pet : pets)
+            if (!ignoreNew || !pet.isNew())
+                if (name.equalsIgnoreCase(pet.getName()))
+                    return pet;
+
+        return null;
+    }
 }
